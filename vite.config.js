@@ -4,5 +4,8 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/asmuncg/'
+  base: '/acmuncg/',
+  build: {
+    cssMinify: 'esbuild', 
+  },
 })
