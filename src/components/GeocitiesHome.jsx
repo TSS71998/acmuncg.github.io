@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export default function GeocitiesHome() {
-  // You can easily push new events to this array or load them from a JSON file / API
+  //can push new events to this array or load them from a JSON file / API
   const [events, setEvents] = useState([
     {
       id: 1,
@@ -83,7 +83,7 @@ export default function GeocitiesHome() {
         }}
       >
         <div style={{ display: 'inline-block', animation: 'marquee 14s linear infinite' }}>
-          ★ CHECK OUT ANY CLUB BY DOUBLE CLICKING ON THEIR ICON ON THE DESKTOP ★
+          ★ CHECK OUT ANY CLUB BY DOUBLE CLICKING ON THEIR ICON ON THE DESKTOP ★ CHECK OUT ANY CLUB BY DOUBLE CLICKING ON THEIR ICON ON THE DESKTOP ★
         </div>
       </div>
 
@@ -152,7 +152,7 @@ export default function GeocitiesHome() {
             <div>
               <span style={{ color: '#00ff66' }}>E-Mail:</span>{' '}
               <a href="" style={{ color: '#00ffff' }}>
-                
+
               </a>
             </div>
             <div>

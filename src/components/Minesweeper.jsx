@@ -196,7 +196,7 @@ export default function Minesweeper() {
           borderBottom: '2px solid #ffffff',
         }}
       >
-        <SevenSegmentDisplay value={flagsRemaining}/>
+        <SevenSegmentDisplay value={flagsRemaining} />
 
         <button
           onClick={resetGame}
@@ -216,7 +216,7 @@ export default function Minesweeper() {
           {gameOver ? 'X(' : gameWon ? ':)' : ':|'}
         </button>
 
-        <SevenSegmentDisplay value={seconds}/>
+        <SevenSegmentDisplay value={seconds} />
       </div>
 
       <div

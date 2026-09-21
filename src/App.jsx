@@ -4,6 +4,7 @@ import Taskbar from './components/Taskbar';
 import DesktopIcon from './components/DesktopIcon'
 import GeocitiesHome from './components/GeocitiesHome'
 import Minesweeper from './components/Minesweeper'
+import ACMPage from './components/ACMPage'
 
 const APPS = [
   {
@@ -17,24 +18,20 @@ const APPS = [
   {
     id: 'acm',
     title: 'ACM',
-    icon: '📝',
-    width: '360px',
-    defaultPosition: {x:  120, y: 80},
-    component: (
-      <div>
-        <p><b>ACM</b></p>
-      </div>
-    ),
+    icon: `${import.meta.env.BASE_URL}acm_logo.png`,
+    width: '80%',
+    defaultPosition: { x: 120, y: 80 },
+    component: <ACMPage />,
   },
   {
     id: 'robo',
     title: 'Robotics',
     icon: '📝',
-    width: '360px',
-    defaultPosition: {x:  130, y: 90},
+    width: '80%',
+    defaultPosition: { x: 130, y: 90 },
     component: (
       <div>
-        <p><b>Robotics</b></p>
+        <p><b>Site Under Construction</b></p>
       </div>
     ),
   },
@@ -43,10 +40,10 @@ const APPS = [
     title: 'Competitive Coding',
     icon: '📝',
     width: '360px',
-    defaultPosition: {x:  140, y: 100},
+    defaultPosition: { x: 140, y: 100 },
     component: (
       <div>
-        <p><b>Competitive Coding</b></p>
+        <p><b>Site Under Construction</b></p>
       </div>
     ),
   },
@@ -55,10 +52,10 @@ const APPS = [
     title: 'LeetClub',
     icon: '📝',
     width: '360px',
-    defaultPosition: {x:  150, y: 110},
+    defaultPosition: { x: 150, y: 110 },
     component: (
       <div>
-        <p><b>LeetClub</b></p>
+        <p><b>Site Under Construction</b></p>
       </div>
     ),
   },
@@ -67,10 +64,10 @@ const APPS = [
     title: 'Girls Who Code',
     icon: '📝',
     width: '360px',
-    defaultPosition: {x:  160, y: 120},
+    defaultPosition: { x: 160, y: 120 },
     component: (
       <div>
-        <p><b>Girls Who Code</b></p>
+        <p><b>Site Under Construction</b></p>
       </div>
     ),
   },
@@ -79,10 +76,10 @@ const APPS = [
     title: 'InfoSec',
     icon: '📝',
     width: '360px',
-    defaultPosition: {x:  170, y: 130},
+    defaultPosition: { x: 170, y: 130 },
     component: (
       <div>
-        <p><b>InfoSec</b></p>
+        <p><b>Site Under Construction</b></p>
       </div>
     ),
   },
@@ -91,10 +88,10 @@ const APPS = [
     title: 'Game Dev',
     icon: '📝',
     width: '360px',
-    defaultPosition: {x:  180, y: 140},
+    defaultPosition: { x: 180, y: 140 },
     component: (
       <div>
-        <p><b>Game Dev</b></p>
+        <p><b>Site Under Construction</b></p>
       </div>
     ),
   },
@@ -103,8 +100,8 @@ const APPS = [
     title: 'Minesweeper',
     icon: `${import.meta.env.BASE_URL}bomb_icon.png`,
     width: '210px',
-    defaultPosition: {x: 260, y: 120},
-    component: <Minesweeper/>,
+    defaultPosition: { x: 260, y: 120 },
+    component: <Minesweeper />,
   },
 ];
 
@@ -114,9 +111,9 @@ export default function App() {
   const [crtEnabled, setCRTEnabled] = useState(false);
 
   const [windowStates, setWindowStates] = useState({
-    home: {isOpen: true, isMinimized: false, zIndex: 10},
-    acm: {isOpen: false, isMinimized: false, zIndex: 1},
-    mine: {isOpen: false, isMinimized: false, zIndex: 1},
+    home: { isOpen: true, isMinimized: false, zIndex: 10 },
+    acm: { isOpen: false, isMinimized: false, zIndex: 1 },
+    mine: { isOpen: false, isMinimized: false, zIndex: 1 },
   });
 
   useEffect(() => {
@@ -133,7 +130,7 @@ export default function App() {
       const nextZ = prevZ + 1;
       setWindowStates((prevStates) => ({
         ...prevStates,
-        [id]: {isOpen: true, isMinimized: false, zIndex: nextZ},
+        [id]: { isOpen: true, isMinimized: false, zIndex: nextZ },
       }));
       return nextZ;
     });
@@ -145,7 +142,7 @@ export default function App() {
     if (activeId === id && !current.isMinimized) {
       setWindowStates((prev) => ({
         ...prev,
-        [id]: {...prev[id], isMinimized: true},
+        [id]: { ...prev[id], isMinimized: true },
       }));
       setActiveId(null);
     } else {
@@ -156,7 +153,7 @@ export default function App() {
   const closeWindow = (id) => {
     setWindowStates((prev) => ({
       ...prev,
-      [id]: {...prev[id], isOpen: false, isMinimized: false},
+      [id]: { ...prev[id], isOpen: false, isMinimized: false },
     }));
     if (activeId === id) setActiveId(null);
   };
@@ -165,7 +162,7 @@ export default function App() {
     id: app.id,
     title: app.title,
     isOpen: windowStates[app.id]?.isOpen,
-    isMinimized:windowStates[app.id]?.isMinimized,
+    isMinimized: windowStates[app.id]?.isMinimized,
   }));
 
   return (
@@ -179,14 +176,14 @@ export default function App() {
           overflow: 'hidden',
         }}
       >
-        <div style={{display: 'flex', flexDirection: 'column', zIndex: 0, position: 'relative'}}>
+        <div style={{ display: 'flex', flexDirection: 'column', zIndex: 0, position: 'relative' }}>
           {APPS.filter((a) => a.id !== 'mine').map((app) => (
-          <DesktopIcon
-            key={app.id}
-            title={app.title.split(' - ')[0]}
-            icon={app.icon}
-            onOpen={() => openOrFocusApp(app.id)}
-          />
+            <DesktopIcon
+              key={app.id}
+              title={app.title.split(' - ')[0]}
+              icon={app.icon}
+              onOpen={() => openOrFocusApp(app.id)}
+            />
           ))}
         </div>
 
@@ -201,24 +198,24 @@ export default function App() {
 
       {APPS.map((app) => {
         const state = windowStates[app.id];
-          if (!state?.isOpen) return null;
+        if (!state?.isOpen) return null;
 
-          return (
-            <DraggableWindow
-              key={app.id}
-              title={app.title}
-              width={app.width}
-              centerOnMount={app.centerOnMount}
-              defaultPosition={app.defaultPosition || { x: 30, y: 30 }}
-              isMinimized={state.isMinimized}
-              zIndex={state.zIndex}
-              isActive={activeId === app.id}
-              onFocus={() => openOrFocusApp(app.id)}
-              onClose={() => closeWindow(app.id)}
-            >
-              {app.component}
-            </DraggableWindow>
-          );
+        return (
+          <DraggableWindow
+            key={app.id}
+            title={app.title}
+            width={app.width}
+            centerOnMount={app.centerOnMount}
+            defaultPosition={app.defaultPosition || { x: 30, y: 30 }}
+            isMinimized={state.isMinimized}
+            zIndex={state.zIndex}
+            isActive={activeId === app.id}
+            onFocus={() => openOrFocusApp(app.id)}
+            onClose={() => closeWindow(app.id)}
+          >
+            {app.component}
+          </DraggableWindow>
+        );
       })}
 
       <Taskbar
